@@ -1,0 +1,314 @@
+@font-face {
+    font-family: 'fortnite';
+    src: url('font\fortnite.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+body {
+    /* background: url('https://cdn2.unrealengine.com/Fortnite%2Fblog%2Fphotography-blog%2F19_1011_Upgraded_Combat_Screenshot-1920x1080-b7fb7387b1402312bbbe8fbba6954e1715095059.png');  */
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    display: none;
+    font-family: 'Archivo Black', sans-serif;
+    --armour-color: linear-gradient(90deg, rgba(0, 89, 187, 1) 0%, rgba(0, 217, 246, 1) 99%, rgba(20, 248, 249, 1) 100%);
+    --health-color: linear-gradient(90deg, rgba(15, 190, 31, 1) 0%, rgba(120, 236, 41, 1) 99%, rgba(201, 246, 86, 1) 100%);
+    --stamina-color: rgb(255, 255, 255);
+    --white-color: #fff;
+    --hud-bg: #0e0d0da8;
+    --carheal-color: linear-gradient(90deg, rgba(255, 149, 0, 1) 0%, rgba(255, 149, 0, 1) 69%, rgba(255, 149, 0, 1) 85%, rgba(255, 149, 0, 1) 92%, rgba(255, 149, 0, 1) 98%, rgba(255, 222, 0, 1) 100%);
+}
+
+.soldakisey {
+    margin-top: 7px;
+    width: 10px;
+    height: 10px;
+    background-color: #35b4fd;
+    transform: rotate(45deg);
+}
+
+.oyuncubilgileri {
+    color: white;
+    position: absolute;
+    top: 6vh;
+    left: 4vh;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.bilgiler {
+    float: right;
+    padding: 30px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.steampp {
+    background: linear-gradient(9deg, rgba(0, 0, 0, 1) 0%, rgba(31, 31, 31, 0) 100%) padding-box, linear-gradient(0deg, #18b6ff, rgb(24 24 24 / 0%)) border-box;
+    box-shadow: 0px 30px 60px -12px rgb(37 17 20 / 25%) inset, 0px 18px 36px -18px rgb(154 54 54 / 30%);
+    border: 4px solid transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: auto;
+    float: left;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 10px;
+}
+
+
+/*-------------------------------------------------------*/
+
+.cizgi {
+    margin: 22px;
+    float: left;
+    width: 2px;
+    height: 49px;
+    background-color: white;
+}
+
+.hud {
+    position: absolute;
+    bottom: 4%;
+    left: 3%;
+    font-weight: 500;
+    transition: 1s;
+}
+
+.counter {
+    color: white;
+    position: fixed;
+    margin-left: 25%;
+    margin-top: -86px;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.mermiler {
+    float: right;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.clipAmmoDisplay {
+    opacity: 50%;
+}
+
+.totalAmmoDisplay {
+    font-size: x-large;
+    font-weight: 700px;
+}
+
+.hudBody {
+    display: flex;
+    margin-bottom: 2px;
+    transition: 0.5s;
+}
+
+.StaminaHud {
+    margin-top: 18px;
+    width: 375px;
+    height: 5px;
+    background-color: var(--hud-bg);
+    transition: 1s;
+}
+
+.CarHealHud {
+    margin-top: 18px;
+    width: 375px;
+    height: 40px;
+    background-color: var(--hud-bg);
+}
+
+.CanHud {
+    width: 375px;
+    z-index: 2;
+    height: 37px;
+    background-color: var(--hud-bg);
+}
+
+.ZirhHud {
+    width: 375px;
+    height: 20px;
+    background-color: var(--hud-bg);
+}
+
+.value {
+    height: 100%;
+    width: 100%;
+    transition: 0.8s;
+    font-size: 10px;
+}
+
+.valuetext {
+    float: right;
+    font-size: 20px;
+    color: white;
+    font-family: 'Archivo Black', sans-serif;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.healthvalue {
+    background: var(--health-color);
+    z-index: 3;
+    height: 37px;
+    transition: 1s;
+}
+
+.healthlow {
+    background: red;
+    z-index: 1;
+    height: 37px;
+    transition: 1s;
+}
+
+.armorlow {
+    position: absolute;
+    background: rgb(236, 236, 236);
+    max-width: 375px;
+    z-index: 1;
+    height: 20px;
+    transition: 1s;
+}
+
+.armourvalue {
+    position: absolute;
+    background: var(--armour-color);
+    max-width: 375px;
+    z-index: 2;
+    height: 20px;
+    transition: 1s;
+}
+
+.staminavalue {
+    transition: 1s;
+    background: var(--stamina-color);
+}
+
+.carhealvalue {
+    transition: 1s;
+    background: var(--carheal-color);
+}
+
+.mapinfosicon {
+    background-color: black;
+    opacity: 70%;
+    border-radius: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px 5px;
+    font-family: 'Poppins';
+}
+
+.mapinfos {
+    color: white;
+    display: flex;
+    position: absolute;
+    right: 25px;
+    top: 280px;
+    width: 230px;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.7), 1px -1px 0 rgba(0, 0, 0, 0.7), -1px 1px 0 rgba(0, 0, 0, 0.7), 1px 1px 0 rgba(0, 0, 0, 0.7);
+    flex-direction: row;
+}
+
+.keyhelp {
+    border-radius: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    position: absolute;
+    right: 5px;
+    bottom: 280px;
+    font-weight: 50;
+    letter-spacing: 2px;
+}
+
+.keyhelpicon {
+    width: 30px;
+    height: 30px;
+    margin: -3px 9px -1px 11px;
+    float: right;
+}
+
+.keyhelptext {
+    float: left;
+    border: 1px solid rgba(255, 255, 255, 0.363);
+    border-radius: 10%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+.haritaseysi {
+    padding: 10px;
+    margin-bottom: 29px;
+}
+
+.mermicon {
+    float: right;
+    margin-left: 54px;
+    margin-top: -31px;
+    width: 25px;
+    height: 25px;
+}
+
+.harita {
+    margin-right: -1px;
+}
+
+.haritacerceve {
+    position: absolute;
+    top: 33px;
+    right: 19px;
+    border: 3px solid rgb(187, 187, 187);
+    width: 226px;
+    height: 235px;
+    border-radius: 3px;
+}
+
+@keyframes salla {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+.animated {
+    animation: salla 0.5s ease;
+}
+
+
+/***********************************************************************/

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="oyuncubilgileri">
+        <img class="steampp" src="https://images-ext-1.discordapp.net/external/MIdFHs_dn5nLtOUIamF_FR7EY8dVy2BB7u45eVogPyg/%3F4%2527/https/fortnite.gg/img/items/451/icon.png?format=webp" alt="">
+        <div class="bilgiler">
+            <div class="soldakisey"></div>
+            <div class="steamismi" style="margin-right: 10px; margin-left: 10px;">berxt.ogg </div>
+            <div id="userid" class="userid">id</div>
+            <img id="micicon" style="width: 25px; height: 25px; margin-right: 2px; margin-top: 0px; padding-left: 5px;" src="assets/img/mic.png" alt="">
+        </div>
+    </div>
+    <div class="haritacerceve"></div>
+    <div class="hud">
+        <div id="hudBodycarheal" class="hudBodycarheal hudBody">
+            <img style="width: 30px; height: 30px; margin-right: 10px; margin-top: 23px;" src="assets/img/steeringwheel.png" alt="">
+            <div class="CarHealHud">
+                <div id="carheal" class="carhealvalue value"></div>
+            </div>
+            <div id="valuetextcarhealth" style="padding-top: 18px;" class="valuetextcarhealth valuetext">100</div>
+        </div>
+        <div id="hudBodystamina" class="hudBodystamina hudBody">
+            <img id="staminaicon" style="width: 28px; height: auto; margin-right: 10px;" src="assets/img/stamina.png" alt="">
+            <div id="StaminaHud" class="StaminaHud">
+                <div id="stamina" class="staminavalue value"></div>
+            </div>
+        </div>
+        <div id="hudBodyzirh" class="hudBodyzirh hudBody">
+            <img style="width: 28px; height: 25px; margin-right: 10px;" src="assets/img/armor.png" alt="">
+            <div class="ZirhHud">
+                <div id="armor" class="armourvalue value"></div>
+                <div id="armorlow" class="armorlow value"></div>
+            </div>
+            <div id="valuetextarmor" class="valuetextarmor valuetext">100</div>
+        </div>
+        <div class="hudBodycan hudBody">
+            <img style="width: 25px; height: 25px; margin-right: 14px; margin-top: 7px; " src="assets/img/health.png" alt="">
+            <div class="CanHud">
+                <div id="healthlow" class="healthlow value">
+                <div id="health" class="healthvalue value"></div>
+                </div>
+            </div>
+            <div id="valuetexthealth" class="valuetexthealth valuetext">100</div>
+        </div>
+        <div id="counter" class="counter">
+            <div class="cizgi"></div>
+            <div class="mermiler">
+                <div class="clipAmmoDisplay" id="clipAmmoDisplay">12</div>
+                <div class="totalAmmoDisplay" id="totalAmmoDisplay">232</div>
+                <img class="mermicon" src="assets/img/ammo.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="mapinfos" class="mapinfos">
+        <img class="mapinfosicon" style="width: 25px; height: 25px; margin-right: 10px;" src="assets/img/time.PNG" alt="">
+        <div id="zaman" style="padding-top: 5px;">19:30</div>
+        <img class="mapinfosicon" style="width: 25px; height: 25px; margin-right: 10px;" src="assets/img/players.png" alt="">
+        <div id="oyuncusayisi" style="padding-top: 5px; justify-content: center; align-items: flex-start;">95</div>
+        <i style="font-size: 150%;" class="fas fa-crosshairs mapinfosicon"></i>
+        <div id="kill" style="padding-top: 5px; justify-content: center; align-items: flex-start;">0</div>
+    </div>
+    <div class="minimapkare"></div>
+    <div id="keyhelp" class="keyhelp">
+        <div class="haritaseysi">
+            <div id="harita" class="keyhelptext">P</div>
+            <img class="keyhelpicon harita" src="assets/img/map.png" alt="">
+        </div>
+        <div class="cantaseysi">
+            <div id="canta" class="keyhelptext">TAB</div>
+            <img class="keyhelpicon backpack" src="assets/img/backpack.png" alt=""></div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
