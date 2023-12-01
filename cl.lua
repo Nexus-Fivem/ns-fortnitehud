@@ -238,7 +238,7 @@ Citizen.CreateThread(function()
             end)
 
             if not success then
-                PedKiller = GetPlayerPed(-1)
+                PedKiller = PlayerPedId()
             end 
 
             local success, error = pcall(function()
