@@ -3,7 +3,7 @@ Config = {}
 Config.Inventory = "TAB"
 Config.Map = "P"
 Config.SteamPhoto = true
-Config.steamAPIKey = "6BBB7ACBD157605FD26297BDE7F315D2"
+Config.steamAPIKey = ""
 
 
 -- Hit Marker
