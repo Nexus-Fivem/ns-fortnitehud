@@ -131,24 +131,31 @@ CreateThread(function()
 end)
 
 -- Minimap
-CreateThread(function()
-    local minimap = RequestScaleformMovie("minimap")
-    while not HasScaleformMovieLoaded(minimap) do
-      Wait(1)
+function loadMinimapOnVehicleEnter()
+    local oyuncu = PlayerPedId()
+    if IsPedInAnyVehicle(oyuncu, false) then
+        local minimap = RequestScaleformMovie("minimap")
+        while not HasScaleformMovieLoaded(minimap) do
+            Wait(1)
+        end
+        SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
+        SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
+        SetMinimapComponentPosition('minimap_blur', 'L', 'B', 0.83, -0.68, 0.226, 0.326)
+        SetRadarBigmapEnabled(true, false)
+        Wait(500)
+        SetRadarBigmapEnabled(false, false)
+        SetBlipAlpha(GetNorthRadarBlip(), 0)
     end
-    SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
-    SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
-    SetMinimapComponentPosition('minimap_blur', 'L', 'B', 0.83, -0.68, 0.226, 0.326)
+end
 
-    SetRadarBigmapEnabled(true, false)
-    Wait(500)
-    SetRadarBigmapEnabled(false, false)
-    SetBlipAlpha(GetNorthRadarBlip(), 0)
+CreateThread(function()
     while true do
-        Wait(1)
-        BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
-        ScaleformMovieMethodAddParamInt(3)
-        EndScaleformMovieMethod()
+        Wait(100)
+        local oyuncu = PlayerPedId()
+        if IsPedInAnyVehicle(oyuncu, false) then
+            loadMinimapOnVehicleEnter()
+            break
+        end
     end
 end)
 
