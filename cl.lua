@@ -131,11 +131,10 @@ CreateThread(function()
 end)
 
 -- Minimap
-CreateThread(
-  function()
+CreateThread(function()
     local minimap = RequestScaleformMovie("minimap")
     while not HasScaleformMovieLoaded(minimap) do
-      Wait(0)
+      Wait(1)
     end
     SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
     SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
@@ -146,7 +145,7 @@ CreateThread(
     SetRadarBigmapEnabled(false, false)
     SetBlipAlpha(GetNorthRadarBlip(), 0)
     while true do
-        Wait(0)
+        Wait(1)
         BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
         ScaleformMovieMethodAddParamInt(3)
         EndScaleformMovieMethod()
