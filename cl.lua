@@ -131,33 +131,34 @@ CreateThread(function()
 end)
 
 -- Minimap
-function loadMinimapOnVehicleEnter()
-    local oyuncu = PlayerPedId()
-    if IsPedInAnyVehicle(oyuncu, false) then
-        local minimap = RequestScaleformMovie("minimap")
-        while not HasScaleformMovieLoaded(minimap) do
-            Wait(1)
-        end
-        SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
-        SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
-        SetMinimapComponentPosition('minimap_blur', 'L', 'B', 0.83, -0.68, 0.226, 0.326)
-        SetRadarBigmapEnabled(true, false)
-        Wait(500)
-        SetRadarBigmapEnabled(false, false)
-        SetBlipAlpha(GetNorthRadarBlip(), 0)
+function loadMinimapOnScriptStart()
+    local minimap = RequestScaleformMovie("minimap")
+    while not HasScaleformMovieLoaded(minimap) do
+        Wait(1)
     end
+    -- Minimap pozisyonunu ayarlıyoruz
+    SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
+    SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
+    SetMinimapComponentPosition('minimap_blur', 'L', 'B', 0.83, -0.68, 0.226, 0.326)
+    -- Büyük radar animasyonunu gösterip kapatıyoruz
+    SetRadarBigmapEnabled(true, false)
+    Wait(300)
+    SetRadarBigmapEnabled(false, false)
+    -- Kuzey yönünü gösteren blipi gizliyoruz
+    SetBlipAlpha(GetNorthRadarBlip(), 0)
+    
+    -- Sağlık ve zırh göstergesini kapatıyoruz
+    DisplayRadar(true)
+    DisplayHud(false)
 end
 
+-- Script yüklendiğinde minimap'i ayarla
 CreateThread(function()
-    while true do
-        Wait(100)
-        local oyuncu = PlayerPedId()
-        if IsPedInAnyVehicle(oyuncu, false) then
-            loadMinimapOnVehicleEnter()
-            break
-        end
-    end
+    -- Script yüklendikten sonra minimap yüklensin
+    Wait(500) -- Biraz bekleme süresi
+    loadMinimapOnScriptStart()
 end)
+
 
 -- Hitmarker
 
