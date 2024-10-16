@@ -131,32 +131,44 @@ CreateThread(function()
 end)
 
 -- Minimap
-function loadMinimapOnScriptStart()
+CreateThread(function()
+    Wait(1000)
     local minimap = RequestScaleformMovie("minimap")
     while not HasScaleformMovieLoaded(minimap) do
-        Wait(1)
+        Wait(0)
     end
-    -- Minimap pozisyonunu ayarlıyoruz
-    SetMinimapComponentPosition('minimap', 'L', 'B', 0.822, -0.725, 0.165, 0.265)
-    SetMinimapComponentPosition('minimap_mask', "I", "I", 0.83, -0.725, 0.35, 0.15)
-    SetMinimapComponentPosition('minimap_blur', 'L', 'B', 0.83, -0.68, 0.226, 0.326)
-    -- Büyük radar animasyonunu gösterip kapatıyoruz
-    SetRadarBigmapEnabled(true, false)
-    Wait(300)
-    SetRadarBigmapEnabled(false, false)
-    -- Kuzey yönünü gösteren blipi gizliyoruz
-    SetBlipAlpha(GetNorthRadarBlip(), 0)
-    
-    -- Sağlık ve zırh göstergesini kapatıyoruz
-    DisplayRadar(true)
-    DisplayHud(false)
-end
+    local resolutionX, resolutionY = GetActiveScreenResolution()
+    local aspectRatio = GetAspectRatio(0)
+    local minimapWidth = 0.165 
+    local minimapHeight = 0.265 
+    local baseX = 0.822
+    local baseY = -0.725
+    local minimapBaseX = baseX
+    local minimapBaseY = baseY
+    print(aspectRatio)
+    print(16/9)
+    if aspectRatio < (16 / 9) then
+        print("sa")
+        minimapBaseX = minimapBaseX - ((1 - aspectRatio / (16 / 9)))
+    elseif aspectRatio > (16 / 9) then
+        print("as")
+        minimapBaseX = minimapBaseX + ((aspectRatio / (16 / 9) - 1))
+    end
+    SetMinimapComponentPosition('minimap', 'L', 'B', minimapBaseX, minimapBaseY, minimapWidth, minimapHeight)
+    SetMinimapComponentPosition('minimap_mask', 'I', 'I', minimapBaseX + 0.008, minimapBaseY, 0.35, 0.15)
+    SetMinimapComponentPosition('minimap_blur', 'L', 'B', minimapBaseX + 0.008, minimapBaseY + 0.045, 0.226, 0.326)
 
--- Script yüklendiğinde minimap'i ayarla
-CreateThread(function()
-    -- Script yüklendikten sonra minimap yüklensin
-    Wait(500) -- Biraz bekleme süresi
-    loadMinimapOnScriptStart()
+    SetRadarBigmapEnabled(true, false)
+    Wait(500)
+    SetRadarBigmapEnabled(false, false)
+    SetBlipAlpha(GetNorthRadarBlip(), 0)
+
+    while true do
+        Wait(0)
+        BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
+        ScaleformMovieMethodAddParamInt(3)
+        EndScaleformMovieMethod()
+    end
 end)
 
 
